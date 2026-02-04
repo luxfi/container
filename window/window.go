@@ -7,7 +7,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/luxfi/utils"
 	"github.com/luxfi/container/buffer"
 	"github.com/luxfi/timer/mockable"
 )
@@ -83,7 +82,7 @@ func (w *window[T]) Oldest() (T, bool) {
 
 	oldest, ok := w.elements.PeekLeft()
 	if !ok {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	return oldest.value, true
 }

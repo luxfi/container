@@ -6,8 +6,6 @@ package linkedhashmap
 import (
 	"container/list"
 	"sync"
-
-	"github.com/luxfi/utils"
 )
 
 var _ LinkedHashmap[int, struct{}] = (*linkedHashmap[int, struct{}])(nil)
@@ -111,7 +109,7 @@ func (lh *linkedHashmap[K, V]) get(key K) (V, bool) {
 		kv := e.Value.(keyValue[K, V])
 		return kv.value, true
 	}
-	return utils.Zero[V](), false
+	return zero[V](), false
 }
 
 func (lh *linkedHashmap[K, V]) delete(key K) bool {
@@ -132,7 +130,7 @@ func (lh *linkedHashmap[K, V]) oldest() (K, V, bool) {
 		kv := val.Value.(keyValue[K, V])
 		return kv.key, kv.value, true
 	}
-	return utils.Zero[K](), utils.Zero[V](), false
+	return zero[K](), zero[V](), false
 }
 
 func (lh *linkedHashmap[K, V]) newest() (K, V, bool) {
@@ -140,7 +138,7 @@ func (lh *linkedHashmap[K, V]) newest() (K, V, bool) {
 		kv := val.Value.(keyValue[K, V])
 		return kv.key, kv.value, true
 	}
-	return utils.Zero[K](), utils.Zero[V](), false
+	return zero[K](), zero[V](), false
 }
 
 func (lh *linkedHashmap[K, V]) NewIterator() Iter[K, V] {

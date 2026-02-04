@@ -3,8 +3,6 @@
 
 package linked
 
-import "github.com/luxfi/utils"
-
 type keyValue[K, V any] struct {
 	key   K
 	value V
@@ -66,7 +64,7 @@ func (lh *Hashmap[K, V]) Get(key K) (V, bool) {
 	if e, ok := lh.entryMap[key]; ok {
 		return e.Value.value, true
 	}
-	return utils.Zero[V](), false
+	return zero[V](), false
 }
 
 func (lh *Hashmap[K, V]) Delete(key K) bool {
@@ -99,14 +97,14 @@ func (lh *Hashmap[K, V]) Oldest() (K, V, bool) {
 	if e := lh.entryList.Front(); e != nil {
 		return e.Value.key, e.Value.value, true
 	}
-	return utils.Zero[K](), utils.Zero[V](), false
+	return zero[K](), zero[V](), false
 }
 
 func (lh *Hashmap[K, V]) Newest() (K, V, bool) {
 	if e := lh.entryList.Back(); e != nil {
 		return e.Value.key, e.Value.value, true
 	}
-	return utils.Zero[K](), utils.Zero[V](), false
+	return zero[K](), zero[V](), false
 }
 
 func (lh *Hashmap[K, V]) NewIterator() *Iterator[K, V] {
@@ -127,8 +125,8 @@ type Iterator[K comparable, V any] struct {
 func (it *Iterator[K, V]) Next() bool {
 	// If the iterator has been exhausted, there is no next value.
 	if it.exhausted {
-		it.key = utils.Zero[K]()
-		it.value = utils.Zero[V]()
+		it.key = zero[K]()
+		it.value = zero[V]()
 		it.next = nil
 		return false
 	}
@@ -139,8 +137,8 @@ func (it *Iterator[K, V]) Next() bool {
 		oldest := it.lh.entryList.Front()
 		if oldest == nil {
 			it.exhausted = true
-			it.key = utils.Zero[K]()
-			it.value = utils.Zero[V]()
+			it.key = zero[K]()
+			it.value = zero[V]()
 			it.next = nil
 			return false
 		}

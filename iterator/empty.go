@@ -3,8 +3,6 @@
 
 package iterator
 
-import "github.com/luxfi/utils"
-
 var _ Iterator[any] = Empty[any]{}
 
 // Empty is an iterator with no elements.
@@ -15,7 +13,7 @@ func (Empty[_]) Next() bool {
 }
 
 func (Empty[T]) Value() T {
-	return utils.Zero[T]()
+	return zero[T]()
 }
 
 func (Empty[_]) Release() {}

@@ -5,8 +5,6 @@ package heap
 
 import (
 	"container/heap"
-
-	"github.com/luxfi/utils"
 )
 
 var _ heap.Interface = (*indexedQueue[int, int])(nil)
@@ -47,12 +45,12 @@ func (m *Map[K, V]) Push(k K, v V) (V, bool) {
 	}
 
 	heap.Push(m.queue, entry[K, V]{k: k, v: v})
-	return utils.Zero[V](), false
+	return zero[V](), false
 }
 
 func (m *Map[K, V]) Pop() (K, V, bool) {
 	if m.Len() == 0 {
-		return utils.Zero[K](), utils.Zero[V](), false
+		return zero[K](), zero[V](), false
 	}
 
 	popped := heap.Pop(m.queue).(entry[K, V])
@@ -61,7 +59,7 @@ func (m *Map[K, V]) Pop() (K, V, bool) {
 
 func (m *Map[K, V]) Peek() (K, V, bool) {
 	if m.Len() == 0 {
-		return utils.Zero[K](), utils.Zero[V](), false
+		return zero[K](), zero[V](), false
 	}
 
 	entry := m.queue.entries[0]
@@ -77,7 +75,7 @@ func (m *Map[K, V]) Remove(k K) (V, bool) {
 		removed := heap.Remove(m.queue, i).(entry[K, V])
 		return removed.v, true
 	}
-	return utils.Zero[V](), false
+	return zero[V](), false
 }
 
 func (m *Map[K, V]) Contains(k K) bool {
@@ -90,7 +88,7 @@ func (m *Map[K, V]) Get(k K) (V, bool) {
 		got := m.queue.entries[i]
 		return got.v, true
 	}
-	return utils.Zero[V](), false
+	return zero[V](), false
 }
 
 func (m *Map[K, V]) Fix(k K) {

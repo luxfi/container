@@ -54,7 +54,7 @@ func (s *weightedArray) Initialize(weights []uint64) error {
 	}
 
 	// Optimize so that the array is closer to the uniform distribution
-	utils.Sort(s.arr)
+	sortByCompare(s.arr)
 
 	maxIndex := len(s.arr) - 1
 	oneIfOdd := 1 & maxIndex

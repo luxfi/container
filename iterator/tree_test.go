@@ -10,8 +10,8 @@ import (
 	"github.com/google/btree"
 	"github.com/stretchr/testify/require"
 
-	"github.com/luxfi/ids"
 	"github.com/luxfi/container/iterator"
+	"github.com/luxfi/ids"
 )
 
 var defaultTreeDegree = 2

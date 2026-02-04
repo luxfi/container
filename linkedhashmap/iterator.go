@@ -5,8 +5,6 @@ package linkedhashmap
 
 import (
 	"container/list"
-
-	"github.com/luxfi/utils"
 )
 
 var _ Iter[int, struct{}] = (*iterator[int, struct{}])(nil)
@@ -33,8 +31,8 @@ type iterator[K comparable, V any] struct {
 func (it *iterator[K, V]) Next() bool {
 	// If the iterator has been exhausted, there is no next value.
 	if it.exhausted {
-		it.key = utils.Zero[K]()
-		it.value = utils.Zero[V]()
+		it.key = zero[K]()
+		it.value = zero[V]()
 		it.next = nil
 		return false
 	}
@@ -48,8 +46,8 @@ func (it *iterator[K, V]) Next() bool {
 		oldest := it.lh.entryList.Front()
 		if oldest == nil {
 			it.exhausted = true
-			it.key = utils.Zero[K]()
-			it.value = utils.Zero[V]()
+			it.key = zero[K]()
+			it.value = zero[V]()
 			it.next = nil
 			return false
 		}

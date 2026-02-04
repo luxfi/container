@@ -3,8 +3,6 @@
 
 package buffer
 
-import "github.com/luxfi/utils"
-
 const defaultInitSize = 32
 
 // An unbounded deque (double-ended queue).
@@ -88,12 +86,12 @@ func (b *unboundedSliceDeque[T]) PushLeft(elt T) bool {
 
 func (b *unboundedSliceDeque[T]) PopLeft() (T, bool) {
 	if b.size == 0 {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	idx := b.leftmostEltIdx()
 	elt := b.data[idx]
 	// Zero out to prevent memory leak.
-	b.data[idx] = utils.Zero[T]()
+	b.data[idx] = zero[T]()
 	b.size--
 	b.left++
 	b.left %= len(b.data)
@@ -102,7 +100,7 @@ func (b *unboundedSliceDeque[T]) PopLeft() (T, bool) {
 
 func (b *unboundedSliceDeque[T]) PeekLeft() (T, bool) {
 	if b.size == 0 {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	idx := b.leftmostEltIdx()
 	return b.data[idx], true
@@ -110,12 +108,12 @@ func (b *unboundedSliceDeque[T]) PeekLeft() (T, bool) {
 
 func (b *unboundedSliceDeque[T]) PopRight() (T, bool) {
 	if b.size == 0 {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	idx := b.rightmostEltIdx()
 	elt := b.data[idx]
 	// Zero out to prevent memory leak.
-	b.data[idx] = utils.Zero[T]()
+	b.data[idx] = zero[T]()
 	b.size--
 	b.right--
 	if b.right < 0 {
@@ -126,7 +124,7 @@ func (b *unboundedSliceDeque[T]) PopRight() (T, bool) {
 
 func (b *unboundedSliceDeque[T]) PeekRight() (T, bool) {
 	if b.size == 0 {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	idx := b.rightmostEltIdx()
 	return b.data[idx], true
@@ -134,7 +132,7 @@ func (b *unboundedSliceDeque[T]) PeekRight() (T, bool) {
 
 func (b *unboundedSliceDeque[T]) Index(idx int) (T, bool) {
 	if idx < 0 || idx >= b.size {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	leftmostIdx := b.leftmostEltIdx()
 	idx = (leftmostIdx + idx) % len(b.data)

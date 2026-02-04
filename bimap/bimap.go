@@ -9,8 +9,6 @@ import (
 	"errors"
 	"maps"
 	"slices"
-
-	"github.com/luxfi/utils"
 )
 
 var (
@@ -94,7 +92,7 @@ func (m *BiMap[_, V]) HasValue(val V) bool {
 func (m *BiMap[K, V]) DeleteKey(key K) (V, bool) {
 	val, ok := m.keyToValue[key]
 	if !ok {
-		return utils.Zero[V](), false
+		return zero[V](), false
 	}
 	delete(m.keyToValue, key)
 	delete(m.valueToKey, val)
@@ -105,7 +103,7 @@ func (m *BiMap[K, V]) DeleteKey(key K) (V, bool) {
 func (m *BiMap[K, V]) DeleteValue(val V) (K, bool) {
 	key, ok := m.valueToKey[val]
 	if !ok {
-		return utils.Zero[K](), false
+		return zero[K](), false
 	}
 	delete(m.keyToValue, key)
 	delete(m.valueToKey, val)

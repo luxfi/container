@@ -5,7 +5,6 @@ package setmap
 
 import (
 	"github.com/luxfi/math/set"
-	"github.com/luxfi/utils"
 )
 
 type Entry[K any, V comparable] struct {
@@ -106,7 +105,7 @@ func (m *SetMap[K, V]) DeleteKey(key K) (set.Set[V], bool) {
 func (m *SetMap[K, V]) DeleteValue(val V) (K, set.Set[V], bool) {
 	key, ok := m.valueToKey[val]
 	if !ok {
-		return utils.Zero[K](), nil, false
+		return zero[K](), nil, false
 	}
 	set, _ := m.DeleteKey(key)
 	return key, set, true

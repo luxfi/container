@@ -5,8 +5,6 @@ package buffer
 
 import (
 	"sync"
-
-	"github.com/luxfi/utils"
 )
 
 var _ BlockingDeque[int] = (*unboundedBlockingDeque[int])(nil)
@@ -61,7 +59,7 @@ func (q *unboundedBlockingDeque[T]) PopRight() (T, bool) {
 
 	for {
 		if q.closed {
-			return utils.Zero[T](), false
+			return zero[T](), false
 		}
 		if q.Deque.Len() != 0 {
 			return q.Deque.PopRight()
@@ -75,7 +73,7 @@ func (q *unboundedBlockingDeque[T]) PeekRight() (T, bool) {
 	defer q.lock.RUnlock()
 
 	if q.closed {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	return q.Deque.PeekRight()
 }
@@ -104,7 +102,7 @@ func (q *unboundedBlockingDeque[T]) PopLeft() (T, bool) {
 
 	for {
 		if q.closed {
-			return utils.Zero[T](), false
+			return zero[T](), false
 		}
 		if q.Deque.Len() != 0 {
 			return q.Deque.PopLeft()
@@ -118,7 +116,7 @@ func (q *unboundedBlockingDeque[T]) PeekLeft() (T, bool) {
 	defer q.lock.RUnlock()
 
 	if q.closed {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	return q.Deque.PeekLeft()
 }
@@ -128,7 +126,7 @@ func (q *unboundedBlockingDeque[T]) Index(i int) (T, bool) {
 	defer q.lock.RUnlock()
 
 	if q.closed {
-		return utils.Zero[T](), false
+		return zero[T](), false
 	}
 	return q.Deque.Index(i)
 }
