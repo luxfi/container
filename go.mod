@@ -1,6 +1,6 @@
 module github.com/luxfi/container
 
-go 1.26
+go 1.26.1
 
 require (
 	github.com/google/btree v1.1.3
