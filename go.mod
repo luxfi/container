@@ -32,12 +32,13 @@ require (
 	github.com/google/flatbuffers v25.12.19+incompatible // indirect
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/klauspost/compress v1.18.4 // indirect
+	github.com/luxfi/accel v1.0.7 // indirect
 	github.com/luxfi/cache v1.1.0 // indirect
 	github.com/luxfi/compress v0.0.2 // indirect
 	github.com/luxfi/concurrent v0.0.2 // indirect
-	github.com/luxfi/crypto v1.17.38 // indirect
+	github.com/luxfi/crypto v1.19.0 // indirect
 	github.com/luxfi/database v1.17.38 // indirect
-	github.com/luxfi/log v1.2.1 // indirect
+	github.com/luxfi/log v1.4.1 // indirect
 	github.com/luxfi/math/big v0.1.0 // indirect
 	github.com/luxfi/metric v1.4.9 // indirect
 	github.com/luxfi/mock v0.1.0 // indirect
