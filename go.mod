@@ -1,12 +1,12 @@
 module github.com/luxfi/container
 
-go 1.26.1
+go 1.26.3
 
 require (
 	github.com/google/btree v1.1.3
 	github.com/luxfi/consensus v1.22.53
 	github.com/luxfi/ids v1.2.9
-	github.com/luxfi/math v1.2.3
+	github.com/luxfi/math v1.4.0
 	github.com/luxfi/timer v1.0.1
 	github.com/luxfi/utils v1.1.0
 	github.com/stretchr/testify v1.11.1
