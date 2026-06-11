@@ -174,7 +174,7 @@ func TestMerge(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			require := require.New(t)
-			it := iterator.Merge[*state.Staker]((*state.Staker).Less, tt.iterators...)
+			it := iterator.Merge[*testStaker]((*testStaker).Less, tt.iterators...)
 			for _, expected := range tt.expected {
 				require.True(it.Next())
 				require.Equal(expected, it.Value())
@@ -188,7 +188,7 @@ func TestMerge(t *testing.T) {
 
 func TestMergedEarlyRelease(t *testing.T) {
 	require := require.New(t)
-	stakers0 := []*state.Staker{
+	stakers0 := []*testStaker{
 		{
 			TxID:     ids.GenerateTestID(),
 			NextTime: time.Unix(0, 0),
@@ -199,7 +199,7 @@ func TestMergedEarlyRelease(t *testing.T) {
 		},
 	}
 
-	stakers1 := []*state.Staker{
+	stakers1 := []*testStaker{
 		{
 			TxID:     ids.GenerateTestID(),
 			NextTime: time.Unix(1, 0),
@@ -211,12 +211,12 @@ func TestMergedEarlyRelease(t *testing.T) {
 	}
 
 	it := iterator.Merge(
-		(*state.Staker).Less,
-		iterator.Empty[*state.Staker]{},
+		(*testStaker).Less,
+		iterator.Empty[*testStaker]{},
 		iterator.FromSlice(stakers0...),
-		iterator.Empty[*state.Staker]{},
+		iterator.Empty[*testStaker]{},
 		iterator.FromSlice(stakers1...),
-		iterator.Empty[*state.Staker]{},
+		iterator.Empty[*testStaker]{},
 	)
 	require.True(it.Next())
 	it.Release()
