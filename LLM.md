@@ -1,4 +1,4 @@
-# LLM.md - Hanzo Container
+# Hanzo Container
 
 ## Overview
 Go module: github.com/luxfi/container
