@@ -4,7 +4,7 @@ go 1.26.4
 
 require (
 	github.com/google/btree v1.1.3
-	github.com/luxfi/consensus v1.36.2
+	github.com/luxfi/consensus v1.36.63
 	github.com/luxfi/ids v1.3.2
 	github.com/luxfi/math v1.5.1
 	github.com/luxfi/timer v1.1.1
@@ -80,8 +80,8 @@ require (
 	github.com/luxfi/concurrent v0.1.1 // indirect
 	github.com/luxfi/constants v1.6.2 // indirect
 	github.com/luxfi/crypto v1.20.2 // indirect
-	github.com/luxfi/database v1.21.1 // indirect
-	github.com/luxfi/geth v1.20.1 // indirect
+	github.com/luxfi/database v1.21.5 // indirect
+	github.com/luxfi/geth v1.20.2 // indirect
 	github.com/luxfi/log v1.4.3 // indirect
 	github.com/luxfi/math/big v0.1.0 // indirect
 	github.com/luxfi/mdns v0.1.1 // indirect
@@ -93,7 +93,7 @@ require (
 	github.com/luxfi/sampler v1.1.0 // indirect
 	github.com/luxfi/validators v1.3.1 // indirect
 	github.com/luxfi/version v1.0.1 // indirect
-	github.com/luxfi/vm v1.3.1 // indirect
+	github.com/luxfi/vm v1.3.12 // indirect
 	github.com/luxfi/warp v1.24.1 // indirect
 	github.com/luxfi/zap v1.2.6 // indirect
 	github.com/luxfi/zapdb v1.10.6 // indirect
@@ -116,9 +116,9 @@ require (
 	github.com/syndtr/goleveldb v1.0.1-0.20220721030215-126854af5e6d // indirect
 	github.com/tinylib/msgp v1.6.4 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/otel v1.43.0 // indirect
-	go.opentelemetry.io/otel/metric v1.43.0 // indirect
-	go.opentelemetry.io/otel/trace v1.43.0 // indirect
+	go.opentelemetry.io/otel v1.44.0 // indirect
+	go.opentelemetry.io/otel/metric v1.44.0 // indirect
+	go.opentelemetry.io/otel/trace v1.44.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/crypto v0.52.0 // indirect
