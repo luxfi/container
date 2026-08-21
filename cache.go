@@ -11,6 +11,7 @@ type LRUCache[K comparable, V any] struct {
 	capacity int
 	elements map[K]*list.Element
 	lru      *list.List
+	onEvict  func(K, V)
 }
 
 // NewLRUCache creates a new LRU cache
@@ -32,6 +33,7 @@ func NewLRUCacheWithOnEvict[K comparable, V any](size int, onEvict func(K, V)) *
 		capacity: size,
 		elements: make(map[K]*list.Element),
 		lru:      list.New(),
+		onEvict:  onEvict,
 	}
 }
 
@@ -55,7 +57,11 @@ func (c *LRUCache[K, V]) Put(key K, value V) {
 		back := c.lru.Back()
 		if back != nil {
 			c.lru.Remove(back)
-			delete(c.elements, back.Value.(*cacheEntry[K, V]).key)
+			evicted := back.Value.(*cacheEntry[K, V])
+			delete(c.elements, evicted.key)
+			if c.onEvict != nil {
+				c.onEvict(evicted.key, evicted.value)
+			}
 		}
 	}
 
